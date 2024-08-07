@@ -45,6 +45,15 @@ const products = [
 
 const productsElement = document.getElementById("products");
 
+/**
+ * Creates an HTML element with the specified tag name, attributes, and content,
+ * then appends it to a parent element based on the provided selector.
+ *
+ * @param {string} tagName - The tag name of the element to be created.
+ * @param {Object} [attributes={}] - The attributes to be set for the element.
+ * @param {string} [content=""] - The inner content of the element.
+ * @param {string} [parentSelector="body"] - The selector for the parent element.
+ */
 function createAndAppendElement(
   tagName,
   attributes = {},
@@ -52,15 +61,22 @@ function createAndAppendElement(
   parentSelector = "body"
 ) {
   // Create the element with the specified tag name
-  const element = document.createElement(tagName);
+  const element = document.createElement(tagName); // "div"
 
   // Set the attributes of the element
-  for (const [key, value] of Object.entries(attributes)) {
-    element.setAttribute(key, value);
+  // for (const [key, value] of Object.entries(attributes)) { // { class: "card h-100", id: `product-${product.id}` }
+  //   element.setAttribute(key, value);
+  // }
+  for (let key in attributes) {
+    // class
+    if (attributes.hasOwnProperty(key)) {
+      // check class
+      element.setAttribute(key, attributes[key]); // class, card h-100
+    }
   }
 
   // Set the inner content of the element
-  element.innerHTML = content;
+  element.innerHTML = content; // ""
 
   // Find the parent element based on the selector and append the new element to it
   const parentElement = document.querySelector(parentSelector) || document.body;
@@ -68,22 +84,23 @@ function createAndAppendElement(
 }
 
 products.forEach((product) => {
-  const divColumelement = document.createElement("div");
-  divColumelement.classList.add("col-md-4");
-  divColumelement.classList.add("mb-4");
+  createAndAppendElement(
+    "div",
+    { class: "col-md-4 mb-4", id: `column-${product.id}` },
+    "",
+    `#products`
+  );
 
-  productsElement.appendChild(divColumelement);
-
-createAndAppendElement(
+  createAndAppendElement(
     "div",
     { class: "card h-100", id: `product-${product.id}` },
     "",
-    `#products > .col-md-4:nth-child(${product.id})`
+    `#column-${product.id}`
   );
 
-createAndAppendElement(
+  createAndAppendElement(
     "img",
-    { class: "card-img-top", src: product.image, alt: product.alt },
+    { class: "card-img-top", src: product.image, alt: product.name },
     "",
     `#product-${product.id}`
   );

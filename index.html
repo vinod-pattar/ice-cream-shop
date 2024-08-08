@@ -160,7 +160,8 @@
     <!-- Enquiry form starts  -->
     <div class="container-fluid mt-5 bg-primary-subtle p-5">
       <h2 class="text-center mb-4">Enquiry Form</h2>
-      <form class="container">
+      <div id="successMessage"></div>
+      <form class="container" method="POST" id="enquiryForm">
         <div class="row">
           <!-- First Name -->
           <div class="form-group col-md-6">
@@ -169,7 +170,13 @@
               type="text"
               class="form-control"
               id="firstName"
+              name="firstName"
               placeholder="First Name"
+              required
+              aria-required="true"
+              
+              maxlength="20"
+              title="Enter your first name"
             />
           </div>
           <!-- Last Name -->
@@ -179,7 +186,12 @@
               type="text"
               class="form-control"
               id="lastName"
+              name="lastName"
               placeholder="Last Name"
+              required
+              aria-required="true"
+              minlength="2"
+              maxlength="20"
             />
           </div>
         </div>
@@ -191,6 +203,7 @@
               type="tel"
               class="form-control"
               id="mobile"
+              name="mobile"
               placeholder="Mobile"
             />
           </div>
@@ -201,6 +214,7 @@
               type="email"
               class="form-control"
               id="email"
+              name="email"
               placeholder="Email Address"
             />
           </div>
@@ -209,7 +223,7 @@
           <!-- Ice Cream Products Dropdown -->
           <div class="form-group col-md-12">
             <label for="iceCreamProduct">Select Ice Cream Product</label>
-            <select id="iceCreamProduct" class="form-control">
+            <select id="iceCreamProduct" class="form-control" name="iceCreamProduct">
               <option selected>Choose...</option>
               <option>Ice cream 1</option>
               <option>Ice cream 2</option>
@@ -227,12 +241,17 @@
             class="form-control"
             id="enquiryMessage"
             rows="4"
+            name="enquiryMessage"
             placeholder="Your message..."
+            required
+            minlength="10"
+            maxlength="1024"
           ></textarea>
         </div>
         <div class="d-flex justify-content-end my-2">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+        <div id="errorMessages"></div>
       </form>
     </div>
     <!-- Enquiry form ends  -->

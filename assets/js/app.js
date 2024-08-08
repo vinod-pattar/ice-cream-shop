@@ -150,3 +150,154 @@ products.forEach((product) => {
     `.buttonGroup-${product.id}`
   );
 });
+
+const enquiryForm = document.getElementById("enquiryForm");
+
+function validation({
+  firstName,
+  lastName,
+  mobile,
+  email,
+  iceCreamProduct,
+  enquiryMessage,
+}) {
+  let isValid = true;
+  let errorMessages = [];
+  document.getElementById("errorMessages").innerHTML = "";
+
+  // Validate firstName
+  if (firstName.length < 2) {
+    isValid = false;
+    errorMessages.push("First Name must be at least 2 characters long");
+  }
+  if (firstName.length > 20) {
+    isValid = false;
+    errorMessages.push("First Name must be less than 20 characters.");
+  }
+
+  if (lastName.length < 2) {
+    isValid = false;
+    errorMessages.push("Last Name must be at least 2 characters long");
+  }
+
+  if (lastName.length > 20) {
+    isValid = false;
+    errorMessages.push("Last Name must be less than 20 characters.");
+  }
+
+  const mobilePattern = /^[6-9]\d{9}$/;
+
+  if (!mobilePattern.test(mobile)) {
+    isValid = false;
+    errorMessages.push("Mobile number must be 10 digits long.");
+  }
+
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(email)) {
+    isValid = false;
+    errorMessages.push("Please enter a valid email address.");
+  }
+
+  const productsOptions = [
+    "Ice cream 1",
+    "Ice cream 2",
+    "Ice cream 3",
+    "Ice cream 4",
+    "Ice cream 5",
+    "Ice cream 6",
+  ];
+
+  if (!productsOptions.includes(iceCreamProduct)) {
+    isValid = false;
+    errorMessages.push("Please select an ice cream product.");
+  }
+
+  if (enquiryMessage.length < 10) {
+    isValid = false;
+    errorMessages.push("Enquiry Message must be at least 10 characters long.");
+  }
+  if (enquiryMessage.length > 1024) {
+    isValid = false;
+    errorMessages.push(
+      "Enquiry Message must be less than 1024 characters long."
+    );
+  }
+  if (!isValid) {
+    errorMessages.forEach((message) => {
+      createAndAppendElement(
+        "div",
+        { class: "alert alert-danger", role: "alert" },
+        message,
+        "#errorMessages"
+      );
+    });
+  }
+  return isValid;
+}
+
+enquiryForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const firstName = event.target.elements.firstName.value.trim();
+  const lastName = event.target.elements.lastName.value.trim();
+  const mobile = event.target.elements.mobile.value.trim();
+  const email = event.target.elements.email.value.trim();
+  const iceCreamProduct = event.target.elements.iceCreamProduct.value.trim();
+  const enquiryMessage = event.target.elements.enquiryMessage.value.trim();
+
+  console.log(
+    firstName,
+    lastName,
+    mobile,
+    email,
+    iceCreamProduct,
+    enquiryMessage
+  );
+
+  if (
+    validation({
+      firstName,
+      lastName,
+      mobile,
+      email,
+      iceCreamProduct,
+      enquiryMessage,
+    })
+  ) {
+    // const formData = new FormData();
+    // formData.append("firstName", firstName);
+    // formData.append("lastName", lastName);
+    // formData.append("mobile", mobile);
+    // formData.append("email", email);
+    // formData.append("iceCreamProduct", iceCreamProduct);
+    // formData.append("enquiryMessage", enquiryMessage);
+    fetch(
+      `https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY0MDYzMzA0MzU1MjY0NTUzYzUxMzAi_pc`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          mobile,
+          email,
+          iceCreamProduct,
+          enquiryMessage,
+        }),
+      }
+    ).then((response) => {
+      if (response.ok) {
+        console.log("Enquiry submitted successfully");
+        createAndAppendElement(
+          "div",
+          { class: "alert alert-success", role: "alert" },
+          "We have received your enquiry and will get back to you!",
+          "#successMessage"
+        );
+        enquiryForm.reset();
+      } else {
+        console.error("Failed to submit enquiry");
+        alert("Failed to submit enquiry");
+      }
+    });
+  }
+});

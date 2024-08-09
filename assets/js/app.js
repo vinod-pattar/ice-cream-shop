@@ -4,7 +4,7 @@ const products = [
     name: "Ice Cream 1",
     price: 10.99,
     description: "This is Ice Cream 1",
-    image: "https://placehold.co/350x350/blue/white?text=Ice+cream+1",
+    image: "https://placehold.co/350x350/blue/white?text=Ice+cream+1+Updated",
   },
   {
     id: 2,

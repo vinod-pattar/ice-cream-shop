@@ -1,47 +1,47 @@
 const products = [
-  {
-    id: 1,
-    name: "Ice Cream 1",
-    price: 10.99,
-    description: "This is Ice Cream 1",
-    image: "https://www.pexels.com/photo/two-ice-cream-cups-1362534/",
-  },
-  {
-    id: 2,
-    name: "Ice Cream 2",
-    price: 19.99,
-    description: "This is Ice Cream 2",
-    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gettyimages.in%2Fphotos%2Fice-cream&psig=AOvVaw1Rdu2AXQZCsiIZ1qPwJzK7&ust=1723631780493000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjKs_3i8YcDFQAAAAAdAAAAABAK",
-  },
-  {
-    id: 3,
-    name: "Ice Cream 3",
-    price: 14.99,
-    description: "This is Ice Cream 3",
-    image: "https://www.pexels.com/photo/close-up-photo-of-person-holding-assorted-flavor-ice-cream-on-cone-1352245/",
-  },
-  {
-    id: 4,
-    name: "Ice Cream 4",
-    price: 10.99,
-    description: "This is Ice Cream 4",
-    image: "https://www.pexels.com/photo/selective-focus-photography-of-strawberry-ice-cream-with-cookie-1352281/",
-  },
-  {
-    id: 5,
-    name: "Ice Cream 5",
-    price: 19.99,
-    description: "This is Ice Cream 2",
-    image: "https://www.pexels.com/photo/vanila-sundae-with-choco-on-top-161420/",
-  },
-  {
-    id: 6,
-    name: "Ice Cream 6",
-    price: 14.99,
-    description: "This is Ice Cream 3",
-    image: "https://www.pexels.com/photo/close-up-photo-of-a-bowl-of-ice-cream-2586924/",
-  },
-];
+    {
+      id: 1,
+      name: "Ice Cream 1",
+      price: 10.99,
+      description: "This is Ice Cream 1",
+      image: "https://tse3.mm.bing.net/th?id=OIP.ln30sLX6wNSm6fnka9tXVQHaEo&pid=Api&P=0&h=180",
+    },
+    {
+      id: 2,
+      name: "Ice Cream 2",
+      price: 19.99,
+      description: "This is Ice Cream 2",
+      image: "https://wallpapercave.com/wp/wp3783205.jpg",
+    },
+    {
+      id: 3,
+      name: "Ice Cream 3",
+      price: 14.99,
+      description: "This is Ice Cream 3",
+      image: "https://images.alphacoders.com/153/thumb-1920-153783.jpg",
+    },
+    {
+      id: 4,
+      name: "Ice Cream 4",
+      price: 10.99,
+      description: "This is Ice Cream 4",
+      image: "https://tse1.mm.bing.net/th?id=OIP.fc1x4FH3fs87Efyf1ew4HgHaEo&pid=Api&P=0&h=180",
+    },
+    {
+      id: 5,
+      name: "Ice Cream 5",
+      price: 19.99,
+      description: "This is Ice Cream 2",
+      image: "https://tse3.mm.bing.net/th?id=OIP._bAsvEdo2gDJv-4z27_B9wHaEK&pid=Api&P=0&h=180",
+    },
+    {
+      id: 6,
+      name: "Ice Cream 6",
+      price: 14.99,
+      description: "This is Ice Cream 3",
+      image: "https://tse2.mm.bing.net/th?id=OIP.O1iDeeu1lbB3MrVrKQR_DwHaEJ&pid=Api&P=0&h=180",
+    },
+  ];
 
 const productsElement = document.getElementById("products");
 
